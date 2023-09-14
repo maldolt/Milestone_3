@@ -1,21 +1,27 @@
-// DEPENDENCIES
-const express = require("express");
+const express = require('express');
 const app = express();
 const { Sequelize } = require('sequelize');
 const path = require('path');
 const cors = require('cors');
 
-//CONFIGURATION / MIDDLEWARE
-require('dotenv').config()
+// CONFIGURATION / MIDDLEWARE
+require('dotenv').config();
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: false}));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, '../build')));
 
-//controllers
+// Controllers
 const booksController = require('./controllers/book_controller');
 app.use('/api/books', booksController);
 
+// Catch all route
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+});
+
 // LISTEN
-app.listen(4005, ()=> {
-    console.log('Server is running port 4005');
-})
+const PORT = process.env.PORT || 4005; // Use the PORT environment variable
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
