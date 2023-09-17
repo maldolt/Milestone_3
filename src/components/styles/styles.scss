@@ -1,0 +1,61 @@
+@import 'variables'; // Import your variables
+
+.h-container {
+  text-align: center;
+  padding: 100px;
+  background-image: url('./background.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+
+
+  h1 {
+    font-size: $font-size-large;
+    margin-bottom: 20px;
+    font-family: $font-family;
+  }
+
+  p {
+    font-size: $font-size-medium;
+    margin-bottom: 40px;
+    font-family: $font-family;
+  }
+
+  .button {
+    padding: 10px 20px;
+    font-size: $font-size-medium;
+    border: none;
+    border-radius: $border-radius;
+    cursor: pointer;
+    font-family: $font-family;
+    background-color: $primary-color;
+    color: white;
+    margin-right: 10px; /* Adjust the margin as needed */
+
+      &:last-child {
+        margin-right: 0; /* Remove margin for the last button */
+      }
+
+    &:hover {
+      background-color: $accent-color;
+    }
+  }
+
+  form {
+    margin-top: 0%;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 1px;
+    font-family: $font-family;
+  }
+
+  input {
+    padding: 10px;
+    width: 50%;
+    margin-bottom: 0px;
+    font-family: $font-family;
+  }
+
+  
+}

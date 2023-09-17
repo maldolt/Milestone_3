@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import './styles/styles.scss';
+
 
 function SignUp() {
   // Create state variables to store user input
@@ -8,6 +10,7 @@ function SignUp() {
   // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('Submit button clicked');
 
     // Create a user object with email and password
     const user = {
@@ -41,7 +44,7 @@ function SignUp() {
   };
 
   return (
-    <div>
+    <div className="h-container">
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -67,7 +70,7 @@ function SignUp() {
           />
         </div>
         <div>
-          <button type="submit">Sign Up</button>
+          <button className="button signup-button" >Sign Up</button>
         </div>
       </form>
     </div>

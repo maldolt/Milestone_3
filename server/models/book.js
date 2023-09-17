@@ -14,28 +14,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   book.init({
-    book_id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true
-    },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    author: {
-      type: DataTypes.STRING,
-      allowNull:false
-    },
-    year_published: {
-      type: DataTypes.SMALLINT,
-      allowNull: false
-    }
+    name: DataTypes.STRING,
+    year_published: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'Book',
-    tableName: 'books',
-    timestamps: false
+    modelName: 'book',
   });
   return book;
 };

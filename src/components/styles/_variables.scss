@@ -1,0 +1,27 @@
+// _variables.scss
+
+// Colors
+$primary-color: #f18ec4;
+$accent-color: rgb(243, 206, 138);
+$notification-shadow-color: rgb(176, 238, 249);
+$notification-bg-color: rgb(249, 252, 253);
+$alphabet-bg-color: white;
+$alphabet-hover-color: rgb(29, 133, 153);
+$alphabet-disabled-color: rgb(241, 156, 45);
+$reset-bg-color: orange;
+$reset-hover-color: $accent-color;
+
+
+// Fonts
+$font-family: 'Poppins', sans-serif;
+
+// Sizes
+$font-size-small: 15px;
+$font-size-medium: 20px;
+$font-size-large: 25px;
+$container-width: 40%;
+$word-div-font-size: 33px;
+
+// Border radius
+$border-radius: 16px;
+$btn-border-radius: 4px;

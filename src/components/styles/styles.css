@@ -1,0 +1,46 @@
+.h-container {
+  text-align: center;
+  padding: 100px;
+  background-image: url("./background.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.h-container h1 {
+  font-size: 25px;
+  margin-bottom: 20px;
+  font-family: "Poppins", sans-serif;
+}
+.h-container p {
+  font-size: 20px;
+  margin-bottom: 40px;
+  font-family: "Poppins", sans-serif;
+}
+.h-container .button {
+  padding: 10px 20px;
+  font-size: 20px;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  background-color: #07e1fd;
+  color: white;
+}
+.h-container .button:hover {
+  background-color: rgb(243, 206, 138);
+}
+.h-container form {
+  margin-top: 0%;
+}
+.h-container label {
+  display: block;
+  margin-bottom: 1px;
+  font-family: "Poppins", sans-serif;
+}
+.h-container input {
+  padding: 10px;
+  width: 50%;
+  margin-bottom: 0px;
+  font-family: "Poppins", sans-serif;
+}
+
+/*# sourceMappingURL=styles.css.map */

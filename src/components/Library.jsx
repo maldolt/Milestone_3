@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import './styles/styles.scss';
 
 export default function Library() {
   const [books, setBooks] = useState([]);
@@ -12,7 +13,7 @@ export default function Library() {
     fetchData()
   }, []);
   return (
-    <div>
+    <div className="h-container">
       <h1>Library</h1>
       <ul>
         {books.map((book, index) => (
