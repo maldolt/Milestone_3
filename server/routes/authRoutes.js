@@ -1,21 +1,20 @@
-const express = require('express');
-const router = express.Router();
-const { User } = require('../models');
+'use client'
+import { Auth } from '@supabase/auth-ui-react'
+import { ThemeSupa } from '@supabase/auth-ui-shared'
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 
-router.post('/', async (req, res) => {
-  const { email, password } = req.body;
+export default function AuthForm() {
+  const supabase = createClientComponentClient()
 
-  try {
-    const newUser = await User.create({
-      email,
-      password, // hash the password 
-    });
-
-    res.status(201).json(newUser);
-  } catch (error) {
-    console.error('Error creating user:', error);
-    res.status(500).json({ message: 'Internal server error' });
-  }
-});
-
-module.exports = router;
+  return (
+    <Auth
+      supabaseClient={supabase}
+      view="magic_link"
+      appearance={{ theme: ThemeSupa }}
+      theme="dark"
+      showLinks={false}
+      providers={[]}
+      redirectTo="http://localhost:3000/auth/callback"
+    />
+  )
+}

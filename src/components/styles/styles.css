@@ -22,8 +22,12 @@
   border-radius: 16px;
   cursor: pointer;
   font-family: "Poppins", sans-serif;
-  background-color: #07e1fd;
+  background-color: #f18ec4;
   color: white;
+  margin-right: 10px; /* Adjust the margin as needed */
+}
+.h-container .button:last-child {
+  margin-right: 0; /* Remove margin for the last button */
 }
 .h-container .button:hover {
   background-color: rgb(243, 206, 138);

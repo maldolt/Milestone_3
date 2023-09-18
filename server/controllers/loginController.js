@@ -1,4 +1,4 @@
-const User = require('../models/User'); // Import your User model
+const { User } = require('../models');
 const bcrypt = require('bcrypt'); // For password hashing
 
 async function login(req, res) {
