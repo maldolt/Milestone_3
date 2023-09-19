@@ -7,7 +7,7 @@ import LogIn from './components/LogIn';
 import { useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 
-const supabase = createClient("https://<project>.supabase.co", "<your-anon-key>");
+const supabase = createClient("https://qtzwzoszjisovyydpjww.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0end6b3N6amlzb3Z5eWRwand3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTQyODc5NTksImV4cCI6MjAwOTg2Mzk1OX0.jVDzrA0WmZnpnK3x7T0Jno4siKt_vwcZrC2rwV01il8");
 
 function App() {
   const [email, setEmail] = useState('');

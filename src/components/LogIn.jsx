@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import './styles/styles.scss';
+import { supabase } from './utilities/supabaseClient';
 
+import './styles/styles.scss';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -8,23 +9,19 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Make a POST request to your backend for login
     try {
-      const response = await fetch('http://localhost:4005/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
+      const { user, error } = await supabase.auth.signIn({
+        email,
+        password,
       });
 
-      if (response.ok) {
-        console.log('Login successful');
+      if (error) {
+        console.error('Login failed:', error.message);
       } else {
-        console.error('Login failed');
+        console.log('Login successful:', user);
       }
     } catch (error) {
-      console.error('Error during login:', error);
+      console.error('Error during login:', error.message);
     }
   };
 
@@ -55,7 +52,7 @@ const Login = () => {
           />
         </div>
         <div>
-          <button className="button login-button"type="submit">Login</button>
+          <button className="button login-button" type="submit">Login</button>
         </div>
       </form>
     </div>

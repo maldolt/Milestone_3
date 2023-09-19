@@ -1,47 +1,75 @@
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { createClient } from '@supabase/supabase-js';
 import './styles/styles.scss';
 
+const supabaseUrl = "https://qtzwzoszjisovyydpjww.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0end6b3N6amlzb3Z5eWRwand3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTQyODc5NTksImV4cCI6MjAwOTg2Mzk1OX0.jVDzrA0WmZnpnK3x7T0Jno4siKt_vwcZrC2rwV01il8"
+; 
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 function SignUp() {
-  // Create state variables to store user input
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  // Function to handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log('Submit button clicked');
 
-    // Create a user object with email and password
-    const user = {
-      email,
-      password,
-    };
+  const handleSignUp = async () => {
+    if (email === '' || password === '') {
+      window.alert('Email and Password fields cannot be empty.');
+      return;
+    }
 
     try {
-      // Send a POST request to your server with the user data
-      const response = await fetch('http://localhost:5000/users/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(user),
+      const { error } = await supabase.auth.signUp({
+        email,
+        password,
       });
 
-      if (response.ok) {
-        // If the request is successful, you can redirect the user or perform other actions
-        console.log('User registered successfully');
-        // Reset the form fields
-        setEmail('');
-        setPassword('');
+      if (error) {
+        window.alert('Error signing up: ' + error.message);
       } else {
-        // Handle errors here
-        console.error('Failed to register user');
+        window.alert('Signup successful. Check your email for the verification link.');
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error signing up:', error.message);
+    }
+    navigate('/dashboard');
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Submit button clicked');
+    handleSignUp();
+  };
+
+  const fetchUserData = async (userId) => {
+    try {
+      const { data, error } = await supabase.from('users').select('*').eq('id', userId);
+      if (error) {
+        console.error('Error fetching user data:', error.message);
+        return null;
+      }
+      return data;
+    } catch (error) {
+      console.error('Error fetching user data:', error.message);
+      return null;
     }
   };
+
+  useEffect(() => {
+    const userId = '123'; // Replace with the actual user ID
+    fetchUserData(userId).then((userData) => {
+      if (userData) {
+        console.log('User data:', userData);
+        // Handle user data
+      } else {
+        console.log('Failed to fetch user data.');
+        // Handle error
+      }
+    });
+  }, []);
 
   return (
     <div className="h-container">
@@ -70,7 +98,7 @@ function SignUp() {
           />
         </div>
         <div>
-          <button className="button signup-button" >Sign Up</button>
+          <button className="button signup-button">Sign Up</button>
         </div>
       </form>
     </div>

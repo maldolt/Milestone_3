@@ -30,7 +30,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "node server/server.js"
+    "dev": "vite"
   },
   "eslintConfig": {
     "extends": [
@@ -49,5 +49,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "create-vite": "^4.4.1"
   }
 }
