@@ -102,6 +102,9 @@ function SignUp() {
           <button className="button signup-button">Sign Up</button>
         </div>
       </form>
+      <footer className="footer">
+        <p>&copy; 2023 Reading Log App | <a href={'https://github.com/maldolt/milestone_3.git'} target="_blank" rel="noopener noreferrer">GitHub Repository</a></p>
+      </footer>
     </div>
   );
 }

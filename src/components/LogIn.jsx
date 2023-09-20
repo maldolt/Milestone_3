@@ -79,6 +79,9 @@ const supabase = createClient(supabaseUrl, supabaseKey);
           <button className="button login-button" type="submit" onClick={handleLogin}>Login</button>
         </div>
       </form>
+      <footer className="footer">
+        <p>&copy; 2023 Reading Log App | <a href={'https://github.com/maldolt/milestone_3.git'} target="_blank" rel="noopener noreferrer">GitHub Repository</a></p>
+      </footer>
     </div>
   );
 };
