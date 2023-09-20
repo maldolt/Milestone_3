@@ -7,6 +7,7 @@ const signupController = require('./controllers/signupController');
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/routes'); 
 const { createClient } = require('@supabase/supabase-js');
+const { default: DashboardPage } = require('../src/components/Dashboard');
 
 const supabaseUrl = 'https://qtzwzoszjisovyydpjww.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0end6b3N6amlzb3Z5eWRwand3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTQyODc5NTksImV4cCI6MjAwOTg2Mzk1OX0.jVDzrA0WmZnpnK3x7T0Jno4siKt_vwcZrC2rwV01il8';
@@ -41,12 +42,21 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '../build')));
 app.use(bodyParser.json());
 
+//sequelize
+// Sync the model with the database
+sequelize.sync().then(() => {
+  console.log('Database synced');
+}).catch(err => {
+  console.error('Error syncing database:', err);
+});
+
 // Use the custom middleware function
 app.use(myMiddleware);
 
 // Controllers
 app.use('/api/login', loginController);
 app.use('/api/signup', signupController);
+app.use('/api/dashboard', )
 
 // Use the authRoutes for '/signup'
 app.use('/signup', authRoutes);

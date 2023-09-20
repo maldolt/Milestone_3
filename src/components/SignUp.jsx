@@ -36,7 +36,7 @@ function SignUp() {
     } catch (error) {
       console.error('Error signing up:', error.message);
     }
-    navigate('/Dashboard');
+    navigate(`/Dashboard`);
   };
 
   const handleSubmit = (e) => {

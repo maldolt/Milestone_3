@@ -15,7 +15,8 @@ const supabase = createClient(supabaseUrl, supabaseKey);
     const [state, setState] = useState({ email: "", password: "" });
     const navigate = useNavigate();
   
-    const handleLogin = async () => {
+    const handleLogin = async (e) => {
+      e.preventDefault();
       try {
         const { email, password } = state;
         if (!email || !password) {
@@ -35,7 +36,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
         alert("Login successful!");
         const userUuid = data.user.id;
         
-        navigate("/resources"); // Navigate to the dashboard page
+        navigate(`/dashboard`); // Navigate to the dashboard page
 
        
         localStorage.setItem("userUuid", userUuid);
@@ -74,7 +75,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
           />
         </div>
         <div>
-          <button className="button login-button" type="submit" onClick={handleLogin}>Login</button>
+          <button className="button login-button" type="button" onClick={handleLogin}>Login</button>
           <p>
             Don't have an account? <Link to="/signup">Sign Up</Link>
           </p>
