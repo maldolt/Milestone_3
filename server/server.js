@@ -6,6 +6,11 @@ const loginController = require('./controllers/loginController');
 const signupController = require('./controllers/signupController');
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/routes'); 
+const { createClient } = require('@supabase/supabase-js');
+
+const supabaseUrl = 'https://qtzwzoszjisovyydpjww.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0end6b3N6amlzb3Z5eWRwand3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTQyODc5NTksImV4cCI6MjAwOTg2Mzk1OX0.jVDzrA0WmZnpnK3x7T0Jno4siKt_vwcZrC2rwV01il8';
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Create the Express app
 const app = express();
@@ -53,6 +58,8 @@ app.use('/users', userRoutes);
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../build/index.html'));
 });
+
+//creating a post 
 
 // LISTEN
 const PORT = process.env.PORT || 4005; // Set the PORT using environment variable or default to 4005
