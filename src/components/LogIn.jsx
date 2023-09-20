@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { createClient } from "@supabase/supabase-js";
 import { useNavigate } from 'react-router-dom';
+//import Dashboard from './Dashboard';
 
 import './styles/styles.scss';
 
@@ -33,7 +34,8 @@ const supabase = createClient(supabaseUrl, supabaseKey);
   
         alert("Login successful!");
         const userUuid = data.user.id;
-        navigate(`/home`);
+        
+        navigate(`/dashboard`);
        
         localStorage.setItem("userUuid", userUuid);
       

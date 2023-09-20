@@ -1,55 +1,38 @@
-import React, { useState } from 'react';
-import { supabase } from './utilities/supabaseClient'; 
+import React from 'react';
+import './styles/styles.scss';
 
-const Dashboard = () => {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const { data, error } = await supabase.from('posts').insert([{ title, content }]);
-
-      if (error) {
-        console.error('Error adding post:', error.message);
-        return;
-      }
-
-      console.log('Post added successfully:', data);
-      // Optionally, you can redirect the user or show a success message
-    } catch (error) {
-      console.error('Error adding post:', error.message);
-    }
-  };
+const DashboardPage = () => {
+  // Sample reading log data
+  const readingLog = [
+    { title: 'Book 1', author: 'Author 1', pages: 200 },
+    { title: 'Book 2', author: 'Author 2', pages: 150 },
+    // Add more reading log entries as needed
+  ];
 
   return (
-    <div>
-      <h2>Create a New Post</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="title">Title:</label>
-          <input
-            type="text"
-            id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="content">Content:</label>
-          <textarea
-            id="content"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Submit</button>
-      </form>
+    <div className="h-container">
+      <header>
+        <h1>Dashboard for now</h1>
+      </header>
+
+      <section>
+        <h2>Reading Log</h2>
+        <ul>
+          {readingLog.map((entry, index) => (
+            <li key={index}>
+              <strong>Title:</strong> {entry.title},{' '}
+              <strong>Author:</strong> {entry.author},{' '}
+              <strong>Pages:</strong> {entry.pages}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/qh8d8wKw0jE?si=K_ruwvbRCt0c_lWW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </section>
     </div>
   );
 };
 
-export default Dashboard;
+export default DashboardPage;
