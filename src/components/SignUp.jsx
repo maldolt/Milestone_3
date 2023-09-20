@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { createClient } from '@supabase/supabase-js';
 import './styles/styles.scss';
 
@@ -74,7 +74,7 @@ function SignUp() {
 
   return (
     <div className="h-container">
-      <h2>Sign Up</h2>
+      <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email">Email:</label>
@@ -100,6 +100,9 @@ function SignUp() {
         </div>
         <div>
           <button className="button signup-button">Sign Up</button>
+          <p>
+            Already have an account? <Link to="/login">Login</Link>
+          </p>
         </div>
       </form>
       <footer className="footer">

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { createClient } from "@supabase/supabase-js";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 //import Dashboard from './Dashboard';
 
 import './styles/styles.scss';
@@ -35,7 +35,8 @@ const supabase = createClient(supabaseUrl, supabaseKey);
         alert("Login successful!");
         const userUuid = data.user.id;
         
-        navigate(`/dashboard`);
+        navigate("/resources"); // Navigate to the dashboard page
+
        
         localStorage.setItem("userUuid", userUuid);
       
@@ -46,12 +47,9 @@ const supabase = createClient(supabaseUrl, supabaseKey);
       }
     };
   
-
-
-
   return (
     <div className="h-container">
-      <h2>Login</h2>
+      <h1>Login</h1>
       <form onSubmit={handleLogin}>
         <div>
           <label htmlFor="email">Email:</label>
@@ -77,7 +75,11 @@ const supabase = createClient(supabaseUrl, supabaseKey);
         </div>
         <div>
           <button className="button login-button" type="submit" onClick={handleLogin}>Login</button>
+          <p>
+            Don't have an account? <Link to="/signup">Sign Up</Link>
+          </p>
         </div>
+        
       </form>
       <footer className="footer">
         <p>&copy; 2023 Reading Log App | <a href={'https://github.com/maldolt/milestone_3.git'} target="_blank" rel="noopener noreferrer">GitHub Repository</a></p>
