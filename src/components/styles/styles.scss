@@ -74,9 +74,15 @@
   position: relative;
   bottom: 0;
   width: 100%;
+  font-family: $font-family;
 }
 .resources-container {
   text-align: center;
+  font-family: $font-family;
+  padding: 100px;
+  background-image: url('./background.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
 
   .resource-links {
     display: flex;
