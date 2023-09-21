@@ -9,9 +9,13 @@ export default function Home() {
   
   return (
     <div className="h-container">
-      <h1>Welcome to Our Reading Log App</h1>
-      <p>Take your reading experience to the next level!</p>
-
+      <img 
+      src='https://i.ibb.co/3CJ7Rzz/titlep.png' 
+      alt='reading log'
+      style={{ width: '80%', height: 'auto' }}
+      />
+      <h1>Take your reading experience to the next level!</h1>
+      
       <div className="button-container">
         <Link to="/login" className="button login-button">
           <span className="icon">📚</span>

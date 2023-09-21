@@ -3,15 +3,18 @@ import StarRatings from "react-star-ratings";
 import "./styles/styles.scss";
 import { createClient } from "@supabase/supabase-js";
 
+
 const supabaseUrl = "https://qtzwzoszjisovyydpjww.supabase.co";
 const supabaseKey =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0end6b3N6amlzb3Z5eWRwand3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTQyODc5NTksImV4cCI6MjAwOTg2Mzk1OX0.jVDzrA0WmZnpnK3x7T0Jno4siKt_vwcZrC2rwV01il8";
+
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 const DashboardPage = () => {
   const [title, setTitle] = useState("");
   const [rating, setRating] = useState(0);
   const [date, setDate] = useState(new Date());
+  const [image, setImage] = useState(null); // New state for image
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -23,10 +26,15 @@ const DashboardPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("handleSubmit called");
+    console.log("Title:", title);
+    console.log("Rating:", rating);
+    console.log("Date:", date);
+    console.log("Image:", image);
 
     try {
       // Insert data into your Supabase table
-      const { data, error } = await supabase.from("BookLog").insert([
+      const { data, error } = await supabase.from("Logs").insert([
         //inset table name
         {
           title,
@@ -45,23 +53,31 @@ const DashboardPage = () => {
     }
   };
 
+  const [submittedData, setSubmittedData] = useState(null);
+
   useEffect(() => {
-    const fetchData = async () => {
+    // Fetch submitted data when the form is successfully submitted
+    const fetchSubmittedData = async () => {
       try {
-        // Fetch data from your Supabase table
-        const { data, error } = await supabase.from("BookLog").select("*");
+        const { data, error } = await supabase.from("Logs").select();
         if (error) {
-          console.error("Error fetching data:", error);
+          console.error("Error fetching submitted data:", error);
         } else {
-          console.log("Fetched data:", data);
+          setSubmittedData(data);
         }
       } catch (error) {
         console.error("Error:", error);
       }
     };
 
-    fetchData();
+    fetchSubmittedData();
   }, []);
+
+  //trying to add an image
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+  };
 
   return (
     <div className="h-container">
@@ -72,6 +88,16 @@ const DashboardPage = () => {
         <h1>📚 Reading Logs 📚</h1>
         <form onSubmit={handleSubmit}>
           <div>
+            <div>
+              <label htmlFor="image">Image URL:</label>
+              <input
+                type="URL"
+                id="image"
+                accept="image/*"
+                onChange={handleImageUpload}
+              />
+            </div>
+
             <label htmlFor="title">Title of Book:</label>
             <input
               type="text"
@@ -86,7 +112,7 @@ const DashboardPage = () => {
             <label htmlFor="rating">Rating for Book:</label>
             <StarRatings
               rating={rating} // Use the state variable for the rating
-              starRatedColor="blue"
+              starRatedColor="gold"
               changeRating={(newRating) => setRating(newRating)}
               numberOfStars={5}
               name="rating"
@@ -103,10 +129,50 @@ const DashboardPage = () => {
               required
             />
           </div>
-
-          <button className="log-button" type="submit">Submit</button>
+          <br />
+          <button className="log-button" type="submit">
+            Submit
+          </button>
         </form>
       </section>
+      <hr />
+      <section className="submitted-data">
+          <h2>Current Logs</h2>
+          {submittedData ? (
+            <ul>
+              {submittedData.map((entry) => (
+                <li key={entry.id}>
+                  <div className="log-item">
+                    <div className="log-image">
+                      <img src={entry.image_url} alt="Book" />
+                    </div>
+                    <div className="log-details">
+                      <div>
+                        <strong>Title:</strong> {entry.title}
+                      </div>
+                      <div>
+                        <strong>Rating:</strong>
+                        <StarRatings
+                          rating={entry.rating}
+                          starRatedColor="gold"
+                          numberOfStars={5}
+                          starDimension="20px" // Size of the stars
+                          starSpacing="2px" // Space between stars
+                        />
+                      </div>
+                      <div>
+                        <strong>Date:</strong> {entry.date}
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No data submitted yet.</p>
+          )}
+        </section>
+
       <hr />
       <h1>⏱️ Timers ⏱️</h1>
       <section className="video-section">

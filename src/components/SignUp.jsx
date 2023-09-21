@@ -98,6 +98,7 @@ function SignUp() {
             required
           />
         </div>
+        <br />
         <div>
           <button className="button signup-button">Sign Up</button>
           <p>

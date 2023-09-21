@@ -75,6 +75,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
           />
         </div>
         <div>
+        <br />
           <button className="button login-button" type="button" onClick={handleLogin}>Login</button>
           <p>
             Don't have an account? <Link to="/signup">Sign Up</Link>
