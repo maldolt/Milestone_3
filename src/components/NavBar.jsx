@@ -13,6 +13,9 @@ function Navbar() {
         <li>
           <Link to="/resources">Resources</Link>
         </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
       </ul>
       <ul className="navbar-left">
         <li>

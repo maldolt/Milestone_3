@@ -93,7 +93,7 @@ const DashboardPage = () => {
               <input
                 type="URL"
                 id="image"
-                accept="image/*"
+                accept="text"
                 onChange={handleImageUpload}
               />
             </div>

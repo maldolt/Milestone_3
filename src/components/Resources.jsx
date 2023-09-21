@@ -5,6 +5,8 @@ const Resources = () => {
   return (
     <div className="resources-container">
       <h1>Resources</h1>
+      <h2>The following Websites provide you  with and opportunity to explore books Online</h2>
+      <hr />
       <div className="resource-links">
       <div className="resource">
           <a href="https://www.getepic.com/" target="_blank" rel="noopener noreferrer">
