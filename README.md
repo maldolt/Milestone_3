@@ -1,3 +1,4 @@
+[Reading-Log.png](https://postimg.cc/dL2r09Pg)
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
