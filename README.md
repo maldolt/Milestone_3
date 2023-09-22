@@ -1,4 +1,5 @@
-[Reading-Log.png](https://postimg.cc/dL2r09Pg)
+[![Reading-Log.png](https://i.postimg.cc/bNMT366Y/Reading-Log.png)](https://postimg.cc/dL2r09Pg)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
