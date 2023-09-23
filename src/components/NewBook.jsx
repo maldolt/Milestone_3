@@ -24,6 +24,10 @@ const supabaseKey =
     const handleDateChange = (e) => {
       setDate(e.target.value);
     };
+
+    const handleImageUrlChange = (e) => {
+      setImage(e.target.value);
+    };
   
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -37,9 +41,10 @@ const supabaseKey =
         // Insert data into your Supabase table
         const { data, error } = await supabase.from("Logs").insert([
           {
-            title,
-            rating,
-            date,
+            title: title,
+            rating: rating,
+            date: date,
+            image_url: image,
           },
         ]);
   
@@ -56,11 +61,6 @@ const supabaseKey =
       }
     };
   
-    const handleImageUpload = (e) => {
-      const file = e.target.files[0];
-      setImage(file);
-    };
-  
     return (
       <div className="h-container">
         <header>
@@ -72,10 +72,11 @@ const supabaseKey =
               <div>
                 <label htmlFor="image">Image URL:</label>
                 <input
-                  type="URL"
+                  type="url"
                   id="image"
                   accept="text"
-                  onChange={handleImageUpload}
+                  value={image}
+                  onChange={handleImageUrlChange}
                 />
               </div>
   

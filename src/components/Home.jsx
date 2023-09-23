@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className="h-container">
       <img 
-      src='https://i.ibb.co/3CJ7Rzz/titlep.png' 
+      src='https://ucarecdn.com/8238afb5-f420-4873-962c-b2fdbb5d6e0a/1.png' 
       alt='reading log'
       style={{ width: '80%', height: 'auto' }}
       />
