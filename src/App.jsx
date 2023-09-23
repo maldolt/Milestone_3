@@ -9,6 +9,12 @@ import DashboardPage from './components/Dashboard';
 import About from './components/About'
 import NewBook from './components/NewBook'
 import PasswordReset from './components/PasswordReset';
+// import ProtectedRoute from './ProtectedRoute';
+
+// const isAuthenticated = () => {
+//   // Check if the user is authenticated (e.g., by checking token, login status)
+//   // Return true if authenticated, false otherwise
+// };
 
 const App = () => {
   return (
@@ -26,7 +32,7 @@ const App = () => {
             <Route path="/about" element={<About />} />
             <Route path="/newbook" element={<NewBook />} />
             <Route path="/password-reset" element={<PasswordReset />} />
-            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/dashboard" element={<DashboardPage />} />            
           </Routes>
         </main>
       </Router>

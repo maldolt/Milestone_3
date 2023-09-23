@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import StarRatings from "react-star-ratings";
 import "./styles/styles.scss";
 import { createClient } from "@supabase/supabase-js";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const supabaseUrl = "https://qtzwzoszjisovyydpjww.supabase.co";
 const supabaseKey =
@@ -12,6 +12,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 const DashboardPage = () => {
   const [submittedData, setSubmittedData] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchSubmittedData = async () => {
@@ -30,13 +31,43 @@ const DashboardPage = () => {
     fetchSubmittedData();
   }, []);
 
+  const handleSignOut = async () => {
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+        console.error("Error signing out:", error.message);
+      } else {
+        navigate(`/login`);
+      }
+    } catch (error) {
+      console.error("Error signing out:", error.message);
+    }
+  };
+
   return (
     <div className="h-container">
       <header>
+        <button
+          onClick={handleSignOut}
+          style={{
+            position: "absolute",
+            top: 10, 
+            right: 10, 
+            padding: "10px 15px", 
+            background: "#fd7443",
+            color: "white", 
+            border: "none", 
+            borderRadius: "5px", // Adjust border radius as needed
+            cursor: "pointer", // Show pointer cursor on hover
+          }}
+        >
+          Sign Out
+        </button>
+
         <img
           src="https://ucarecdn.com/dbb636d3-4b45-479d-9e5d-419d284891db/2.png"
           alt="Dashboard "
-          style={{ width: '80%', height: 'auto' }}
+          style={{ width: "80%", height: "auto" }}
         />
         <section className="log-container">
           <h1>Add your new books here!</h1>
@@ -82,6 +113,7 @@ const DashboardPage = () => {
           <p>No data submitted yet.</p>
         )}
       </section>
+
       <hr />
       <h1>⏱️ Timers ⏱️</h1>
       <section className="video-section">
