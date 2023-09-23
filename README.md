@@ -1,4 +1,4 @@
-![Reading-Log.png](https://i.postimg.cc/bNMT366Y/Reading-Log.png)
+<img src="https://i.postimg.cc/bNMT366Y/Reading-Log.png" alt="Reading-Log.png">
 
 
 # Getting Started with Create React App
