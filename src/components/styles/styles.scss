@@ -69,11 +69,11 @@
   
   .log-container {
     margin-top: 0%;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: #ffffff9a;
     padding: 10px; 
     border-radius: $border-radius;
     font-family: $font-family;
-    font-size: $font-size-medium;
+    font-size: $font-size-large;
     width: 50%; 
     margin: 0 auto; 
     
@@ -178,19 +178,30 @@
   font-size: $font-size-small;
   margin-top: 20px;
 
+  
   ul {
     display: flex;
     flex-wrap: wrap;
     padding: 0;
-
+    
+    
+      
     li {
       width: 30%; 
       margin-right: 3.3333%; 
       margin-bottom: 20px; 
+      
+     
+      img {
+        max-width: 80%; 
+        max-height: auto; 
+        margin-right: 20px; 
+      }
 
       &:nth-child(3n) {
         margin-right: 0; 
       }
+      
     }
 
     

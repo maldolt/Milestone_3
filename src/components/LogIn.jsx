@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { createClient } from "@supabase/supabase-js";
 import { Link, useNavigate } from 'react-router-dom';
-//import Dashboard from './Dashboard';
+
 
 import './styles/styles.scss';
 
@@ -47,7 +47,11 @@ const supabase = createClient(supabaseUrl, supabaseKey);
         console.error("Login error:", error);
       }
     };
-  
+  // password forgot
+  const handleForgotPassword = () => {
+    navigate(`/password-reset`);
+
+  }
   return (
     <div className="h-container">
       <h1>Login</h1>
@@ -81,6 +85,15 @@ const supabase = createClient(supabaseUrl, supabaseKey);
             Don't have an account? <Link to="/signup">Sign Up</Link>
           </p>
         </div>
+        <div>
+        <button
+          className="button forgot-password-button"
+          type="button"
+          onClick={handleForgotPassword}
+        >
+          Forgot Password
+        </button>
+      </div>
         
       </form>
       <footer className="footer">

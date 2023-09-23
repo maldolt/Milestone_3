@@ -16,16 +16,22 @@ const About = () => {
       <h2>How it works:</h2>
       <ul>
         <li>
-          Kids can create an account and log in to their personalized dashboard.
+          <img src='https://ucarecdn.com/84ca7e99-35f3-4dcc-b1cf-1a5225a0ab0b/1.png' alt='step 1'></img>
+          <p>Kids can create an account and log in to their personalized dashboard.</p>
         </li>
         <li>
-          Once logged in, they can view their submitted reading logs and the associated reading times.
+          <img src='https://ucarecdn.com/5da2c813-136a-4fa4-8b73-29c0f7433343/2.png' alt='step 2' />
+          <p>Once logged in, they can view their submitted reading logs and the associated reading times.</p>
         </li>
         <li>
-          To add a new book they've read, they simply create a new log entry. They can rate the book and even upload an image using a URL to capture the essence of the book.
+          <img src='https://ucarecdn.com/c781c15d-5807-4f7b-8c09-83ccfec9c8a5/3.png' alt='step 3' />
+          <p>To add a new book they've read, they simply create a new log entry. They can rate the book and even upload an image using a URL to capture the essence of the book.</p>
         </li>
       </ul>
       </div>
+      <footer className="footer">
+        <p>&copy; 2023 Reading Log App | <a href={'https://github.com/maldolt/milestone_3.git'} target="_blank" rel="noopener noreferrer">GitHub Repository</a></p>
+      </footer>
     </div>
   );
 }

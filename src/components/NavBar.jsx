@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import './styles/Navbar.scss';
 
 function Navbar() {
+  const [user, setUser] = useState(null);
+
   return (
     <nav>
       
@@ -18,12 +20,23 @@ function Navbar() {
         </li>
       </ul>
       <ul className="navbar-left">
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
-        <li>
-          <Link to="/signup">Sign Up</Link>
-        </li>
+        {user ? (
+          <>
+            <li>{user.name}</li>
+            <li>
+              <button onClick={() => setUser(null)}>Sign Out</button>
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/signup">Sign Up</Link>
+            </li>
+          </>
+        )}
       </ul>
     </nav>
   );
