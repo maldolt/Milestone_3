@@ -1,3 +1,6 @@
+<img src="https://i.postimg.cc/bNMT366Y/Reading-Log.png" alt="Reading-Log.png">
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
