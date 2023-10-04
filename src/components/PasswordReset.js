@@ -3,10 +3,10 @@ import { createClient } from '@supabase/supabase-js';
 import "./styles/styles.scss";
 import { useNavigate } from 'react-router-dom';
 
-const supabaseUrl = "https://qtzwzoszjisovyydpjww.supabase.co";
-const supabaseKey =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0end6b3N6amlzb3Z5eWRwand3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTQyODc5NTksImV4cCI6MjAwOTg2Mzk1OX0.jVDzrA0WmZnpnK3x7T0Jno4siKt_vwcZrC2rwV01il8";
-    
+//supabase
+const supabaseUrl = Url_Supabase.env
+const supabaseKey = Enon_key_Supabase.env ;
+
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 const PasswordReset = () => {
